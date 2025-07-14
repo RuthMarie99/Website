@@ -22,17 +22,16 @@
     }
 
     header {
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 2.5em;
-    letter-spacing: 2px;
-    background-color: #ffffff; 
-    color: #ff7f00;           /* kräftiges Orange */
-    padding: 30px;
-    text-align: center;
-    border-bottom: 1px solid #ccc;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      background-color: #ffffff;
+      color: #000000;
+      padding: 30px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
     }
-
 
     .intro {
       display: flex;
@@ -68,6 +67,10 @@
 
     .contact-links {
       margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
     .contact-links a {
@@ -84,9 +87,18 @@
       height: 24px;
     }
 
-    .contact-links p {
-      margin-top: 10px;
+    .email-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-size: 1.1em;
+      justify-content: center;
+    }
+
+    .email-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
     }
 
     .grid {
@@ -112,24 +124,37 @@
     }
 
     .image-wrapper img {
-      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      top: 0;
-      left: 0;
-      transition: opacity 0.4s ease-in-out;
+      transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
     }
 
-    .hover-img {
+    /* Zoom-Effekt */
+    .tile-zoom .image-wrapper img {
+      position: relative;
+    }
+
+    .tile-zoom:hover .image-wrapper img {
+      transform: scale(1.1);
+    }
+
+    /* Wroov-Effekt */
+    .tile-wroov .image-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .tile-wroov .hover-img {
       opacity: 0;
     }
 
-    .tile:hover .hover-img {
+    .tile-wroov:hover .hover-img {
       opacity: 1;
     }
 
-    .tile:hover .main-img {
+    .tile-wroov:hover .main-img {
       opacity: 0;
     }
 
@@ -150,7 +175,16 @@
         grid-template-columns: 1fr;
       }
     }
+
   </style>
+  <script>
+    function copyEmail() {
+      const email = "ruths_artgallery@outlook.de";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("E-Mail-Adresse kopiert: " + email);
+      });
+    }
+  </script>
 </head>
 <body>
 
@@ -180,44 +214,137 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
           @ruths_artgallery
         </a>
-        <p>ruths_artgallery@outlook.de</p>
+        <div class="email-container">
+          <img class="email-icon" src="bilder/EmailLight.jpg" alt="E-Mail" onclick="copyEmail()" title="E-Mail kopieren">
+          <span id="email">ruths_artgallery@outlook.de</span>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="grid">
-    <div class="tile">
-      <div class="image-wrapper">
-        <img class="main-img" src="bilder/Bird.jpeg" alt="Bild 1" />
-        <img class="hover-img" src="bilder/Bird-hover.jpeg" alt="Bild 1 Hover" />
-      </div>
-      <p class="caption">Bild 1</p>
+    <!-- Kachel mit Zoom -->
+    <div class="tile tile-zoom">
+      <a href="landscape1.html" target="_blank">
+        <div class="image-wrapper">
+          <img src="bilder/Landscape1.jpg" alt="Bild 1" />
+        </div>
+        <p class="caption">Before the Storm</p>
+      </a>
     </div>
 
-    <div class="tile">
-      <div class="image-wrapper">
-        <img class="main-img" src="bilder/Landscape1.jpeg" alt="Bild 2" />
-        <img class="hover-img" src="bilder/Landscape1-hover.jpeg" alt="Bild 2 Hover" />
-      </div>
-      <p class="caption">Bild 2</p>
+  <div class="grid">
+    <!-- Kachel mit Zoom -->
+    <div class="tile tile-zoom">
+      <a href="bird.html" target="_blank">
+        <div class="image-wrapper">
+          <img src="bilder/Bird.jpg" alt="Bild 1" />
+        </div>
+        <p class="caption">Before the Storm</p>
+      </a>
+    </div>
+      
     </div>
 
-    <div class="tile">
+        <!-- Kachel mit Bildwechsel (Wroov) -->
+    <div class="tile tile-wroov">
       <div class="image-wrapper">
-        <img class="main-img" src="bilder/Landscape2.jpeg" alt="Bild 3" />
+        <img class="main-img" src="bilder/Landscape2.jpeg" alt="Bild 1" />
+        <img class="hover-img" src="bilder/Landscape2.jpg"Bild 1 Hover" />
       </div>
-      <p class="caption">Bild 3</p>
+      <p class="caption">Bild 1 (Wroov)</p>
     </div>
 
-    <div class="tile">
+        <!-- Kachel mit Bildwechsel (Wroov) -->
+    <div class="tile tile-wroov">
       <div class="image-wrapper">
-        <img class="main-img" src="bilder/Women.jpeg" alt="Bild 4" />
+        <img class="main-img" src="bilder/Landscape3.jpeg" alt="Bild 1" />
+        <img class="hover-img" src="bilder/Landscape3-hover.jpeg" alt="Bild 1 Hover" />
       </div>
-      <p class="caption">Bild 4</p>
+      <p class="caption">Bild 1 (Wroov)</p>
     </div>
 
-    <!-- Weitere Kacheln können hier ergänzt werden -->
-  </div>
+    <!-- Weitere Zoom-Kachel -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/Audrey.jpg" alt="Bild 5" />
+      </div>
+      <p class="caption">Bild 5 (Zoom)</p>
+    </div>
+
+    <!-- Bild 6 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/Flower.jpg" alt="Bild 6" />
+      </div>
+      <p class="caption">Bild 6 (Zoom)</p>
+    </div>
+
+    <!-- Bild 7 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/Girl.jpg" alt="Bild 7" />
+      </div>
+      <p class="caption">Bild 7 (Zoom)</p>
+    </div>
+
+        <!-- Bild 7 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/boot.jpg" alt="Bild 7" />
+      </div>
+      <p class="caption">Bild 7 (Zoom)</p>
+    </div>
+
+        <!-- Bild 7 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/Girl2.jpg" alt="Bild 7" />
+      </div>
+      <p class="caption">Bild 7 (Zoom)</p>
+    </div>
+
+    <!-- Bild 8 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/OldCar.jpg" alt="Bild 8" />
+      </div>
+      <p class="caption">Bild 8 (Zoom)</p>
+    </div>
+
+    <!-- Bild 9 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/StarNight.jpg" alt="Bild 9" />
+      </div>
+      <p class="caption">Bild 9 (Zoom)</p>
+    </div>
+
+        <!-- Bild 10 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/Women.jpeg" alt="Bild 10" />
+      </div>
+      <p class="caption">Bild 7 (Zoom)</p>
+    </div>
+
+    <!-- Bild 11 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/peakyKiss.jpg" alt="Bild 11" />
+      </div>
+      <p class="caption">Bild 8 (Zoom)</p>
+    </div>
+
+    <!-- Bild 12 -->
+    <div class="tile tile-zoom">
+      <div class="image-wrapper">
+        <img src="bilder/Pirats.jpg" alt="Bild 12" />
+      </div>
+      <p class="caption">Bild 9 (Zoom)</p>
+    </div>
+
+
 
 </body>
 </html>
