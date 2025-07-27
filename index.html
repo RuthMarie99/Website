@@ -93,6 +93,7 @@
       gap: 8px;
       font-size: 1.1em;
       justify-content: center;
+      cursor: pointer;
     }
 
     .email-icon {
@@ -101,6 +102,34 @@
       cursor: pointer;
     }
 
+    /* Floating "Copied"-Hinweis */
+    #copied-notification {
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #19204a;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -30px);
+      }
+    }
+
+    .show {
+      animation: fadeUp 2s ease-out forwards;
+    }
+
+    /* Bild-Kachel-Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -130,16 +159,10 @@
       transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
     }
 
-    /* Zoom-Effekt */
-    .tile-zoom .image-wrapper img {
-      position: relative;
-    }
-
     .tile-zoom:hover .image-wrapper img {
       transform: scale(1.1);
     }
 
-    /* Wroov-Effekt */
     .tile-wroov .image-wrapper img {
       position: absolute;
       top: 0;
@@ -175,16 +198,7 @@
         grid-template-columns: 1fr;
       }
     }
-
   </style>
-  <script>
-    function copyEmail() {
-      const email = "ruths_artgallery@outlook.de";
-      navigator.clipboard.writeText(email).then(() => {
-        alert("E-Mail-Adresse kopiert: " + email);
-      });
-    }
-  </script>
 </head>
 <body>
 
@@ -214,40 +228,61 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
           @ruths_artgallery
         </a>
-        <div class="email-container">
-          <img class="email-icon" src="bilder/EmailLight.jpg" alt="E-Mail" onclick="copyEmail()" title="E-Mail kopieren">
+        <div class="email-container" onclick="copyEmail()">
+          <img class="email-icon" src="bilder/EmailLight.jpg" alt="E-Mail" title="E-Mail kopieren">
           <span id="email">ruths_artgallery@outlook.de</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="grid">
-    <!-- Kachel mit Zoom -->
+  <!-- Kopiert-Animation -->
+  <div id="copied-notification">Copied</div>
+
+  <script>
+    function copyEmail() {
+      const email = "ruths_artgallery@outlook.de";
+      navigator.clipboard.writeText(email).then(() => {
+        const note = document.getElementById("copied-notification");
+        note.classList.remove("show"); // Reset Animation
+        void note.offsetWidth; // Reflow zum Neustart der Animation
+        note.classList.add("show");
+      });
+    }
+  </script>
+<div class="grid">
+
+  <div class="tile tile-zoom">
+    <a href="Frida.html" target="_blank">
+      <div class="image-wrapper">
+        <img src="bilder/Frida/FridaKahlo.jpeg" alt="Before the Storm" />
+      </div>
+      <p class="caption">Viva la Frida</p>
+    </a>
+  </div>
+
     <div class="tile tile-zoom">
       <a href="landscape1.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/Landscape1.jpg" alt="Bild 1" />
+          <img src="bilder/Landscape1.jpg" alt="Before the Storm" />
         </div>
         <p class="caption">Before the Storm</p>
       </a>
     </div>
 
-    <!-- Kachel mit Zoom -->
     <div class="tile tile-zoom">
       <a href="bird.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/Bird.jpg" alt="Bild 1" />
+          <img src="bilder/Bird.jpg" alt="Peakcock in Blue" />
         </div>
         <p class="caption">Peakcock in Blue</p>
       </a>
     </div>
-      
-        <!-- Kachel mit Bildwechsel (Wroov) -->
+
     <a href="landscape2.html" target="_blank" class="tile tile-wroov">
       <div class="image-wrapper">
-        <img class="main-img" src="bilder/Landscape2.jpeg" alt="Landscape 2" />
-        <img class="hover-img" src="bilder/Landscape2.jpg" alt="Landscape 2 Hover" />
+        <img class="main-img" src="bilder/Landscape2.jpeg" alt="Golden Dusk" />
+        <img class="hover-img" src="bilder/Landscape2.jpg" alt="Golden Dusk Hover" />
       </div>
       <p class="caption">Golden Dusk over the Hilltown</p>
     </a>
@@ -255,22 +290,20 @@
     <div class="tile tile-zoom">
       <a href="David.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/David.jpg" alt="Bild 1" />
+          <img src="bilder/David.jpg" alt="Modern David" />
         </div>
         <p class="caption">Modern David</p>
       </a>
     </div>
 
-        <!-- Kachel mit Bildwechsel (Wroov) -->
     <a href="landscape3.html" target="_blank" class="tile tile-wroov">
       <div class="image-wrapper">
-        <img class="main-img" src="bilder/Landscape3.jpeg" alt="Landscape 3" />
-        <img class="hover-img" src="bilder/Landscape4/Landscape3.jpeg" alt="Landscape 3 Hover" />
+        <img class="main-img" src="bilder/Landscape3.jpeg" alt="Whispers of the Clouds" />
+        <img class="hover-img" src="bilder/Landscape4/Landscape3.jpeg" alt="Hover" />
       </div>
       <p class="caption">Whispers of the Clouds</p>
     </a>
 
-    <!-- Weitere Zoom-Kachel -->
     <div class="tile tile-zoom">
       <a href="Audrey.html" target="_blank">
         <div class="image-wrapper">
@@ -280,7 +313,6 @@
       </a>
     </div>
 
-    <!-- Bild 6 -->
     <div class="tile tile-zoom">
       <a href="Flower.html" target="_blank">
         <div class="image-wrapper">
@@ -290,74 +322,68 @@
       </a>
     </div>
 
-    <!-- Bild 7 -->
     <div class="tile tile-zoom">
       <a href="Women1.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/Girl.jpg" alt="Flower" />
+          <img src="bilder/Girl.jpg" alt="The Side of Thought" />
         </div>
         <p class="caption">The Side of Thought</p>
       </a>
     </div>
 
-        <!-- Bild 7 -->
     <div class="tile tile-zoom">
       <a href="Boot.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/boot.jpg" alt="Flower" />
+          <img src="bilder/boot.jpg" alt="Sailing into Abstraction" />
         </div>
         <p class="caption">Sailing into Abstraction</p>
       </a>
     </div>
 
-        <!-- Bild 7 -->
     <div class="tile tile-zoom">
       <a href="Women2.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/Girl2.jpg" alt="Flower" />
+          <img src="bilder/Girl2.jpg" alt="Women Portrait" />
         </div>
         <p class="caption"></p>
       </a>
     </div>
 
-    <!-- Bild 8 -->
     <div class="tile tile-zoom">
       <a href="OldCar.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/OldCar.jpg" alt="Flower" />
+          <img src="bilder/OldCar.jpg" alt="Memory Lane" />
         </div>
         <p class="caption">Memory Lane</p>
       </a>
     </div>
 
-    <!-- Bild 9 -->
     <div class="tile tile-zoom">
       <a href="StaryNight.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/StarNight.jpg" alt="Flower" />
+          <img src="bilder/StarNight.jpg" alt="Starry Sky" />
         </div>
         <p class="caption">Breakfast at the Sky</p>
       </a>
     </div>
 
-        <!-- Bild 10 -->
     <a href="Kamel.html" target="_blank" class="tile tile-wroov">
       <div class="image-wrapper">
-        <img class="main-img" src="bilder/Women.jpeg" alt="Landscape 2" />
-        <img class="hover-img" src="bilder/KamelGirl.jpeg" alt="Landscape 2 Hover" />
+        <img class="main-img" src="bilder/Women.jpeg" alt="Desert Bond" />
+        <img class="hover-img" src="bilder/KamelGirl.jpeg" alt="Desert Bond Hover" />
       </div>
       <p class="caption">Desert Bond</p>
     </a>
 
-    <!-- Bild 11 -->
     <div class="tile tile-zoom">
       <a href="PeakyBlinder.html" target="_blank">
         <div class="image-wrapper">
-          <img src="bilder/PeakyBlinder.jpg" alt="Flower" />
+          <img src="bilder/PeakyBlinder.jpg" alt="Peaky Blinder" />
         </div>
         <p class="caption">The Gentleman of Birmingham</p>
       </a>
     </div>
 
+  </div>
 </body>
 </html>
