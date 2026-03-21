@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Playfair Display', serif;
-      background-color: #fff;
+      background-color: #ffffff;
       color: #19204a;
     }
 
@@ -57,6 +57,7 @@
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
+      padding-bottom: 25px;
     }
 
     .intro-img img {
@@ -143,6 +144,8 @@
       align-items: center;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 12px; 
+      overflow: hidden;   
     }
 
     .image-wrapper {
@@ -181,10 +184,42 @@
       opacity: 0;
     }
 
+    .tile a,
+    .tile a:visited,
+    .tile a:hover,
+    .tile a:active,
+    .tile.tile-wroov {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px);
+      transition: 0.2s ease;
+    }
+
     .caption {
       margin-top: 10px;
       text-align: center;
       font-size: 1em;
+    }
+
+    .caption {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .red-dot {
+      width: 25px;              
+      height: 25px;
+      background-color: #8b0000; 
+      border-radius: 50%;
+      display: inline-block;
     }
 
     @media (max-width: 900px) {
@@ -198,13 +233,136 @@
         grid-template-columns: 1fr;
       }
     }
+
+  /* Hamburger Button als drei Linien */
+  .menu-button {
+    position: absolute;
+    top: 40%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;  /* kleiner, minimalistisch */
+    height: 22px; /* Abstand der Linien */
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu-button .bar {
+    height: 3px; /* dünne, elegante Linien */
+    width: 100%;
+    background-color: #19204a;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .menu-button.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  /* Hover-Effekt: Linien verschmelzen zu mittlerem Strich */
+  .menu-button:hover .bar1 {
+    transform: translateY(9px) scaleY(0);
+    opacity: 0;
+  }
+
+  .menu-button:hover .bar2 {
+    transform: translateY(8px);
+  }
+
+  .menu-button:hover .bar3 {
+    transform: translateY(-8px) scaleY(0);
+    opacity: 0;
+  }
+
+  /* Slide-in Menü */
+  #side-menu {
+    position: fixed;
+    top: 0;
+    right: -450px; /* versteckt */
+    width: 450px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    padding-top: 120px;
+    gap: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1em; /* deutlich kleiner */
+    transition: right 0.35s ease;
+    z-index: 1000;
+  }
+
+  #side-menu a {
+    text-decoration: none;
+    color: #19204a;
+    padding: 10px 20px;
+    transition: color 0.2s;
+  }
+
+  #side-menu a:hover {
+    color: #E1B000;
+  }
+
+  #side-menu.open {
+    right: 0;
+  }
+
+    /* Menü-Header */
+  .menu-header {
+    text-align: center;
+    margin-bottom: 20px; /* Abstand zu den Links */
+  }
+
+  .menu-header img {
+    max-width: 150px; /* Bildgröße anpassen */
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px; /* optional für abgerundete Ecken */
+  }
+
+  .menu-header hr {
+    border: none;
+    border-top: 1px solid #ccc; /* dünner Strich */
+    margin: 10px auto 0 auto;
+    width: 80%; /* Breite des Strichs */
+  }
+
   </style>
 </head>
 <body>
 
   <div class="hero"></div>
 
-  <header>Ruth's Artgallery</header>
+  <header>
+    <div class="header-left">
+      Ruth's Artgallery
+    </div>
+
+        <!-- Hamburger Menu Button rechts -->
+    <div class="menu-button" onclick="toggleMenu()">
+      <span class="bar bar1"></span>
+      <span class="bar bar2"></span>
+      <span class="bar bar3"></span>
+    </div>
+
+    <!-- Slide-in Menu -->
+    <div id="side-menu">
+      <div class="menu-header">
+        <img src="bilder/Icon.png" alt="Ruth's Artgallery Logo">
+        <hr>
+      </div>
+      <a href="about.html">Your Commission Journey</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
 
   <div class="intro">
     <div class="intro-text">
@@ -249,6 +407,31 @@
         note.classList.add("show");
       });
     }
+
+    function toggleMenu() {
+      const menu = document.getElementById("side-menu");
+      const button = document.querySelector(".menu-button");
+
+      menu.classList.toggle("open");
+
+      // Hamburger ausblenden, wenn Menü offen
+      if (menu.classList.contains("open")) {
+        button.classList.add("hidden");
+      } else {
+        button.classList.remove("hidden");
+      }
+    }
+
+    // Menü schließen, wenn außerhalb geklickt wird
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("side-menu");
+      const button = document.querySelector(".menu-button");
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        menu.classList.remove("open");
+        button.classList.remove("hidden");
+      }
+    });
+
   </script>
 <div class="grid">
 
@@ -257,7 +440,10 @@
       <div class="image-wrapper">
         <img src="bilder/Zitronenbild/Zitronenbild.jpg" alt="Lemon Branch in Stillness" />
       </div>
-      <p class="caption">Lemon Branch in Stillness</p>
+      <p class="caption">
+        Lemon Branch in Stillness
+        <span class="red-dot"></span>
+      </p>
     </a>
   </div>
 
@@ -396,3 +582,4 @@
   </div>
 </body>
 </html>
+
