@@ -130,6 +130,82 @@
       animation: fadeUp 2s ease-out forwards;
     }
 
+          .footer {
+      background-color: #222222; /* dunkleres Grau */
+      color: #dddddd;
+      padding: 60px 100px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2em;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-img img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #dddddd;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffcc00; /* z.B. goldgelb beim Hover */
+    }
+
+    .footer-links img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .email-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      user-select: none;
+      color: #dddddd;
+    }
+
+    .email-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .email-container:hover {
+      color: #ffcc00;
+    }
+
+    @media (max-width: 600px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
     /* Bild-Kachel-Grid */
     .grid {
       display: grid;
@@ -580,6 +656,25 @@
     </div>
 
   </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-img">
+        <img src="bilder/Ruth.jpeg" alt="Ruth Wilhelm" />
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/ruths_artgallery" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+          @ruths_artgallery
+        </a>
+        <div class="email-container">
+          <img class="email-icon" src="bilder/EmailDark.png" alt="E-Mail" onclick="copyEmail()" title="E-Mail kopieren" />
+          <span id="email">ruths_artgallery@outlook.de</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
 
