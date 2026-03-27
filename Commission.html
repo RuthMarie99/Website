@@ -264,7 +264,7 @@
   }
 
   .commission-journey h2 {
-    text-align: center;
+    text-align: left;
     font-size: 2.5em;
     font-weight: 700;
     margin-bottom: 50px;
@@ -400,6 +400,55 @@
     color: #fff;
   }
 
+  .step-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.step-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Bild */
+.step-image {
+  flex: 1;
+}
+
+.step-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Text */
+.step-text {
+  flex: 1;
+}
+
+.step-text h3 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.step-text ul {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .step-row {
+    flex-direction: column;
+  }
+
+  .step-row.reverse {
+    flex-direction: column;
+  }
+}
+
   /* Responsive */
   @media (max-width: 768px) {
     .timeline {
@@ -420,76 +469,79 @@
   </header>
 
   <section class="commission-journey">
-    <h2>Your Commission Journey</h2>
-    <div class="timeline">
+  <h2>Your Commission Journey</h2>
 
-      <!-- Step 1 -->
-      <div class="timeline-step">
-        <div class="circle"></div>
-        <div class="line"></div>
-        <div class="step-content">
-          <h3>Step 1: Contact & Ideas</h3>
-          <ul>
-            <li>Fill out the contact form and share your vision.</li>
-            <li>Include details like subject, style, size, and color preferences.</li>
-          </ul>
-          <!-- Button nach Punkt 1 -->
-          <a href="contact.html" class="step-button">Contact</a>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="timeline-step">
-        <div class="circle"></div>
-        <div class="line"></div>
-        <div class="step-content">
-          <h3>Step 2: Questions & Initial Discussion</h3>
-          <ul>
-            <li>I’ll get back to you with any clarifying questions to fully understand your ideas.</li>
-            <li>If desired, we can have a short <strong>Microsoft Teams meeting</strong> to discuss details.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="timeline-step">
-        <div class="circle"></div>
-        <div class="line"></div>
-        <div class="step-content">
-          <h3>Step 3: Preliminary Sketches</h3>
-          <ul>
-            <li>I’ll create one or several <strong>sketches</strong> based on your input, together with a color scheme to get a feel for the painting.</li>
-            <li>We choose the sketch that best represents your vision.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="timeline-step">
-        <div class="circle"></div>
-        <div class="line"></div>
-        <div class="step-content">
-          <h3>Step 4: Creation</h3>
-          <ul>
-            <li>Once the sketch is approved, I begin the <strong>final artwork</strong>.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="timeline-step">
-        <div class="circle"></div>
-        <div class="step-content">
-          <h3>Step 5: Completion & Delivery</h3>
-          <ul>
-            <li>The artwork is carefully packaged and sent to you.</li>
-            <li>You’ll receive a <strong>confirmation</strong> once the artwork is finished and shipped.</li>
-          </ul>
-        </div>
-      </div>
-
+  <!-- Step 1 -->
+  <div class="step-row">
+    <div class="step-image">
+      <img src="bilder/step1.jpg" alt="Step 1">
     </div>
-  </section>
+    <div class="step-text">
+      <h3>Step 1: Contact & Ideas</h3>
+      <ul>
+        <li>Fill out the contact form and share your vision.</li>
+        <li>Include details like subject, style, size, and color preferences.</li>
+      </ul>
+      <a href="contact.html" class="step-button">Contact</a>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step-row reverse">
+    <div class="step-image">
+      <img src="bilder/step2.jpg" alt="Step 2">
+    </div>
+    <div class="step-text">
+      <h3>Step 2: Questions & Initial Discussion</h3>
+      <ul>
+        <li>I’ll get back to you with clarifying questions.</li>
+        <li>If desired, we can have a short <strong>Microsoft Teams meeting</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step-row">
+    <div class="step-image">
+      <img src="bilder/step3.jpg" alt="Step 3">
+    </div>
+    <div class="step-text">
+      <h3>Step 3: Preliminary Sketches</h3>
+      <ul>
+        <li>I create one or several <strong>sketches</strong>.</li>
+        <li>We choose the version that best matches your vision.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step-row reverse">
+    <div class="step-image">
+      <img src="bilder/step4.jpg" alt="Step 4">
+    </div>
+    <div class="step-text">
+      <h3>Step 4: Creation</h3>
+      <ul>
+        <li>Once approved, I begin the <strong>final artwork</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="step-row">
+    <div class="step-image">
+      <img src="bilder/step5.jpg" alt="Step 5">
+    </div>
+    <div class="step-text">
+      <h3>Step 5: Completion & Delivery</h3>
+      <ul>
+        <li>The artwork is carefully packaged and shipped.</li>
+        <li>You receive a confirmation once it's sent.</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
 
 
 
