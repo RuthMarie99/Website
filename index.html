@@ -209,35 +209,28 @@
 
     .contact-button {
       display: inline-block;
+      padding: 12px 30px;
       margin-top: 20px;
-
-      padding: 16px 32px;
       font-size: 1.1em;
-      font-weight: 700;
-      letter-spacing: 1px;
-
-      border-radius: 999px;
-      border: 2px solid #e69138; /* 👈 dunkle Umrandung */
-
-      background-color: #ffd966;
+      font-weight: 600;
       color: #ffffff;
+
+      background: linear-gradient(135deg, #ffd966, #e69138); 
+      border-radius: 30px;
 
       text-decoration: none;
       cursor: pointer;
 
       transition: all 0.3s ease;
+      box-shadow: 0 6px 15px rgba(25, 32, 74, 0.3);
     }
 
     .contact-button:hover {
-      background-color: #e69138;
-      transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(25, 32, 74, 0.4);
 
-    /* Hover = "Hüpfen" + Farbe */
-    .contact-button:hover {
-      background-color: #e69138;
-      transform: translateY(-4px); /* das ist dein Bounce */
+      /* 👇 dunkleres Orange statt Blau */
+      background: linear-gradient(135deg, #e6b800, #cc6600);
     }
 
     /* Bild-Kachel-Grid */
