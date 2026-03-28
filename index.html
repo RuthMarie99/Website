@@ -207,6 +207,39 @@
       }
     }
 
+    .contact-button {
+      display: inline-block;
+      margin-top: 20px;
+
+      padding: 16px 32px;
+      font-size: 1.1em;
+      font-weight: 700;
+      letter-spacing: 1px;
+
+      border-radius: 999px;
+      border: 2px solid #e69138; /* 👈 dunkle Umrandung */
+
+      background-color: #ffd966;
+      color: #ffffff;
+
+      text-decoration: none;
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+    }
+
+    .contact-button:hover {
+      background-color: #e69138;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Hover = "Hüpfen" + Farbe */
+    .contact-button:hover {
+      background-color: #e69138;
+      transform: translateY(-4px); /* das ist dein Bounce */
+    }
+
     /* Bild-Kachel-Grid */
     .grid {
       display: grid;
@@ -413,12 +446,12 @@
     width: 80%; /* Breite des Strichs */
   }
 
-  /*Banner*/
+/* Banner */
 .icon-banner {
   width: 100%;
-  background-color: #ffd966;  /* helles Grau */
-  padding: 50px 0;             /* Höhe: oben + unten je 50px */
-  margin-bottom: 40px;         /* Abstand zum Grid */
+  background-color: #ffd966;
+  padding: 20px 0;
+  margin-bottom: 40px;
 }
 
 .icon-viewport {
@@ -430,34 +463,45 @@
 
 .icon-track {
   display: flex;
-  gap: 40px;
+  gap: 60px; /* größerer Abstand für größere Icons */
   animation: scroll-left 30s linear infinite;
 }
 
 .icon-item {
-  flex: 0 0 calc(20% - 32px); /* 5 Icons sichtbar, Abstand berücksichtigen */
+  flex: 0 0 calc(15% - 50px); /* 5 Icons sichtbar, Platz für größere Icons */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .icon-item img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
+  width: 150px; /* neue Größe */
+  height: 150px;
+  margin-bottom: 15px; /* Abstand zur Beschriftung */
 }
 
 .icon-item .caption {
   font-family: 'Playfair Display', serif;
-  font-size: 1em;
+  font-size: 1.1em;
   text-align: center;
 }
+
+.icon-item img {
+  transform: perspective(500px) rotateX(5deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.icon-item:hover img {
+  transform: perspective(500px) rotateX(0deg) scale(1.15);
+}
+
 
 .divider {
   font-size: 1.5em;
   color: #19204a;
   align-self: center;
 }
+
+/* Menue */
 
 .menu-close {
   position: absolute;
@@ -497,20 +541,13 @@
   100% { transform: translateX(-50%); }
 }
 
-/* Responsive Anpassungen */
-@media (max-width: 900px) {
-  .icon-item {
-    flex: 0 0 calc(50% - 20px); /* 2 Icons sichtbar */
-  }
-}
-
 @media (max-width: 600px) {
   .icon-item {
-    flex: 0 0 calc(100% - 20px); /* 1 Icon sichtbar */
+    flex: 0 0 calc(100% - 40px);
   }
   .icon-item img {
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
   }
 }
 
@@ -546,7 +583,7 @@
         <hr>
       </div>
       <a href="Commission.html">Your Commission Journey</a>
-      <a href="contact.html">Contact</a>
+      <a href="Contact.html">Contact</a>
     </div>
   </header>
 
@@ -563,6 +600,7 @@
         If you're interested in purchasing a painting or commissioning custom artwork, feel free to reach out via Instagram DMs or email.
         I'm happy to discuss details and pricing with you!
       </p>
+      <a href="Contact.html" class="contact-button">Contact Me</a>
     </div>
 
     <div class="intro-img">
@@ -615,22 +653,6 @@
         <div class="icon-item">
           <img src="bilder/Banner/WorldwideShipping-removebg-preview.png" alt="Icon 6">
           <span class="caption">Worldwide Shipping</span>
-        </div>
-        <!-- Optional: Icons wiederholen für nahtloses Scrollen -->
-        <div class="divider">•</div>
-        <div class="icon-item">
-          <img src="bilder/icon1.png" alt="Icon 1">
-          <span class="caption">Kreativität</span>
-        </div>
-        <div class="divider">•</div>
-        <div class="icon-item">
-          <img src="bilder/icon2.png" alt="Icon 2">
-          <span class="caption">Inspiration</span>
-        </div>
-        <div class="divider">•</div>
-        <div class="icon-item">
-          <img src="bilder/icon3.png" alt="Icon 3">
-          <span class="caption">Leidenschaft</span>
         </div>
       </div>
     </div>
