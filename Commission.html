@@ -382,34 +382,43 @@
   }
 
   /* Button nach Step 1 */
-  .step-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 8px 16px;
-    background-color: transparent;
-    border: 2px solid #19204a;
-    color: #19204a;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 700;
-    transition: all 0.3s ease;
-  }
+.contact-button {
+  display: inline-flex;
+  justify-content: center;
+  width: auto;
+  max-width: fit-content;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffd966, #e69138); 
+  border-radius: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(25, 32, 74, 0.3);
+}
 
-  .step-button:hover {
-    background-color: #19204a;
-    color: #fff;
-  }
+.contact-button:hover {
+  transform:translateY(-3px);
+  box-shadow: 0 10px 20px rgba(25, 32, 74, 0.4);
+  background: linear-gradient(135deg, #e6b800, #cc6600);
+}
+
+
 
   .step-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 40px;
+  gap: 150px;
   margin-bottom: 80px;
 }
 
 .step-row.reverse {
   flex-direction: row-reverse;
+  align-items: flex-start;
 }
 
 /* Bild */
@@ -426,6 +435,9 @@
 /* Text */
 .step-text {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Text oben beginnen */
 }
 
 .step-text h3 {
@@ -442,6 +454,7 @@
 @media (max-width: 768px) {
   .step-row {
     flex-direction: column;
+    gap: 30px; /* Weniger Abstand bei kleinen Bildschirmen */
   }
 
   .step-row.reverse {
@@ -474,7 +487,7 @@
   <!-- Step 1 -->
   <div class="step-row">
     <div class="step-image">
-      <img src="bilder/Commission/Erschaffung.png" alt="Step 1">
+      <img src="bilder/Commission/Computer.jpeg" alt="Step 1">
     </div>
     <div class="step-text">
       <h3>Step 1: Contact & Ideas</h3>
@@ -482,14 +495,14 @@
         <li>Fill out the contact form and share your vision.</li>
         <li>Include details like subject, style, size, and color preferences.</li>
       </ul>
-      <a href="contact.html" class="step-button">Contact</a>
+      <a href="contact.html" class="contact-button">Contact</a>
     </div>
   </div>
 
   <!-- Step 2 -->
   <div class="step-row reverse">
     <div class="step-image">
-      <img src="bilder/Commission/Landscape3.jpeg" alt="Step 2">
+      <img src="bilder/Commission/Staffelei.jpeg" alt="Step 2">
     </div>
     <div class="step-text">
       <h3>Step 2: Questions & Initial Discussion</h3>
@@ -503,7 +516,7 @@
   <!-- Step 3 -->
   <div class="step-row">
     <div class="step-image">
-      <img src="bilder/Commission/Creation.png" alt="Step 3">
+      <img src="bilder/Commission/Sketch.jpeg" alt="Step 3">
     </div>
     <div class="step-text">
       <h3>Step 3: Preliminary Sketches</h3>
@@ -517,7 +530,7 @@
   <!-- Step 4 -->
   <div class="step-row reverse">
     <div class="step-image">
-      <img src="bilder/Commission/Palette1.png" alt="Step 4">
+      <img src="bilder/Commission/Creation.png" alt="Step 4">
     </div>
     <div class="step-text">
       <h3>Step 4: Creation</h3>
@@ -530,7 +543,7 @@
   <!-- Step 5 -->
   <div class="step-row">
     <div class="step-image">
-      <img src="bilder/Commission/Staffelei.jpeg" alt="Step 5">
+      <img src="bilder/Commission/Heim.jpeg" alt="Step 5">
     </div>
     <div class="step-text">
       <h3>Step 5: Completion & Delivery</h3>

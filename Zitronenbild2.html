@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contact Form</title>
+<title>Hanging Citrus</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   body {
@@ -17,7 +17,7 @@
   .hero {
     width: 100%;
     height: 300px;
-    background-image: url("./bilder/Header.jpeg");
+    background-image: url(bilder/Header.jpeg);
     background-size: cover;
     background-position: center;
   }
@@ -252,106 +252,6 @@
     }
   }
 
-  .contact-section {
-    display: flex;
-    justify-content: center;
-    padding: 150px 20px;
-    background-color: #ffffff;
-  }
-
-  .contact-form {
-    width: 100%;
-    max-width: 850px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  /* Button nach Step 1 */
-  .contact-form button {
-    display: inline-flex;
-    justify-content: center;
-    width: auto;
-    max-width: fit-content;
-    padding: 20px 450px;
-    margin-top: 20px;
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #ffffff;
-    background: linear-gradient(135deg, #ffd966, #e69138); 
-    border-radius: 30px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(25, 32, 74, 0.3);
-    outline: none;
-    border: none;
-  }
-
-  .contact-form button:hover {
-    transform:translateY(-3px);
-    box-shadow: 0 10px 20px rgba(25, 32, 74, 0.4);
-    background: linear-gradient(135deg, #e6b800, #cc6600);
-  }
-
-
-  .contact-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #000;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 24px;
-    font-size: 1.2rem;
-    font-family: 'Playfair Display', serif;
-    border-radius: 18px;
-    border: 1px solid #e0e0e0;
-    background-color: #f5f5f7;
-  }
-
-  .contact-form textarea {
-    min-height: 220px;
-  }
-
-  /* Success Message*/
-  .success-hidden {
-    opacity: 0;
-    pointer-events: none;
-    text-align: center;
-    margin-top: 50px;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-  }
-
-  .success-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .success-image {
-    max-width: 300px;
-    width: 100%;
-    margin-bottom: 20px;
-    animation: fadeInScale 0.8s ease;
-  }
-
-  /* leichter Pop-Effekt */
-  @keyframes fadeInScale {
-    0% {
-      transform: scale(0.9);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
 
 </style>
 </head>
@@ -363,53 +263,83 @@
     <a href="index.html" class="back-link">&larr; Back</a>
     Ruth's Artgallery
   </header>
-  </div>
 
-  <section class="contact-section">
-    <form class="contact-form" action="https://formspree.io/f/mgonjoyz" method="POST">
-      <h1 class="contact-title">Contact</h1>
+  <div class="content">
+    <div class="slider-container">
+      <div class="slides">
+        <img src="bilder/Zitronenbild2/Zitronenbild2.jpeg" alt="Zitronen" class="active" />
+        <img src="bilder/Zitronenbild2/2.jpeg" alt="Zitronen 2" />
+        <img src="bilder/Zitronenbild2/3.jpeg" alt="Zitrone 3" />
+        <img src="bilder/Zitronenbild2/4.jpeg" alt="Zitrone 4" />
+        <img src="bilder/Zitronenbild2/5.jpeg" alt="Zitrone 5" />
+      </div>
 
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="text" name="topic" placeholder="Topic" required>
-      <textarea name="message" placeholder="Message" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
+      <button class="arrow left" aria-label="Vorheriges Bild">&#10094;</button>
+      <button class="arrow right" aria-label="Nächstes Bild">&#10095;</button>
 
-    <div id="success-message" class="success-hidden">
-      <img src="bilder/plane.png" alt="Paper Plane" class="success-image" width="400">
-      <h2>Message sent successfully</h2>
+      <div class="dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
+      </div>
     </div>
 
-  </section>
+    <div class="text-area">
+      <h2>Hanging Citrus</h2>
+      <p>
+        A realistic painting of three ripe lemons hanging from a leafy branch. The fruits are rendered in warm shades of yellow, 
+        with soft highlights suggesting natural sunlight. Surrounding them are lush green leaves, varying in tone from bright, 
+        fresh greens to deeper, shadowed hues. The composition is minimalistic, set against a plain, light background that emphasizes 
+        the natural forms and colors.
+      </p>
+      <p>
+        <strong>Original Oil Painting</strong><br />
+        <strong>Format:</strong> 30 x 40 cm<br />
+        <strong>Material:</strong> Hahnemühle Oil/Acrylic artist paper 230 g/m^2, acid-free, age-resistant
+      </p>
+    </div>
+  </div>
+
 
 
   <script>
+    const slides = document.querySelectorAll('.slides img');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.arrow.left');
+    const nextBtn = document.querySelector('.arrow.right');
 
-    const form = document.querySelector(".contact-form");
-    const successMessage = document.getElementById("success-message");
+    let currentIndex = 0;
 
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
+    function showSlide(index) {
+      if(index < 0) index = slides.length - 1;
+      if(index >= slides.length) index = 0;
+      currentIndex = index;
 
-      const data = new FormData(form);
-
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { 'Accept': 'application/json' }
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
       });
 
-      if (response.ok) {
-        form.style.opacity = "0";
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
 
-        setTimeout(() => {
-          form.style.display = "none";
-          successMessage.classList.add("success-visible");
-        }, 400);
-      }
+    prevBtn.addEventListener('click', () => {
+      showSlide(currentIndex - 1);
     });
 
+    nextBtn.addEventListener('click', () => {
+      showSlide(currentIndex + 1);
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index'));
+        showSlide(idx);
+      });
+    });
   </script>
 
   <footer class="footer">
